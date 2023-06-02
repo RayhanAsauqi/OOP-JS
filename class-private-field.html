@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class : private field</title>
+</head>
+<body>
+    <script>
+        // class ini bersifat private dimana tidak dapat di akses dari luar karena sifatnya yang private
+        class Counter{
+            // untuk membuat private field kita bisa menambahkan  # di depannya agar di deklarasikan menjadi sebuah private field
+            #counter = 0;
+
+            increment (){
+                this.#counter++;
+            }
+
+            decrement (){
+                this.#counter--;
+            }
+            // untuk mendapatkan value dari #counter
+            get(){
+                return this.#counter;
+            }
+
+        }
+
+
+        const counter = new Counter()
+
+
+        counter.increment();
+        counter.increment();
+        counter.increment();
+        counter.increment();
+        counter.increment();
+
+
+        console.info(counter.get())
+
+    </script>
+</body>
+</html>

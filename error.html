@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+</head>
+<body>
+    <script>
+
+        class MathUtil{
+
+
+            static sum(...numbers){
+                //2.ketika numbers isi nya kosong atau tidak ada data sama sekali maka akan terjadi error
+                if(numbers.length == 0){
+                    // 1. untuk membuat error pada class kita bisa menggunakan throw untuk melempar error nya ke console
+                    throw new Error ("Total paramater harus lebih dari 0")
+                }
+
+                let total = 0;
+
+                for(const number of numbers){
+                    total += number;
+                }
+
+                return total;
+            }
+        }
+
+       //3.untuk memanggil MathUtil tetapi ketika di MathUtil.sum nya kosong atau tidak ada data di parameternya maka akan menghasilkan error dan otomatis program nya berhenti untuk di jalankan secara otomatis
+        console.info(MathUtil.sum())
+        console.info(MathUtil.sum(1,1,1,1,1))
+
+    </script>
+</body>
+</html>

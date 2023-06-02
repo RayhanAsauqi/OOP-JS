@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error Handling</title>
+  </head>
+  <body>
+    <script>
+      class MathUtil {
+        static sum(...numbers) {
+          //2.ketika numbers isi nya kosong atau tidak ada data sama sekali maka akan terjadi error
+          if (numbers.length == 0) {
+            // 1. untuk membuat error pada class kita bisa menggunakan throw untuk melempar error nya ke console
+            throw new Error("Total paramater harus lebih dari 0");
+          }
+
+          let total = 0;
+
+          for (const number of numbers) {
+            total += number;
+          }
+
+          return total;
+        }
+      }
+
+      //ketika error terjadi otomatis errornya hanya terjadi di dalan block try saja
+      try {
+        console.info(MathUtil.sum());
+        console.info("Reyhan");
+        //pada paramete catch error yang dari try di simpan di dalam parameter error dan akan di eksekusi di bagian catch
+      } catch (error) {
+        console.info(`Terjadi error : ${error.message}`);
+      } finally {
+        console.info("Program selesai");
+      }
+      //ketika kita membuat console.log/console.info maka programnya akan tetap berjalan karena erronya hanya berda di dalam try saja
+      console.info("Reyhan");
+
+
+      //ini contoh menggunakan try finally. try finally hanya akan digunakan di kasus tertentu
+      class Counter {
+        #counter = 0;
+        next() {
+          try {
+            return this.#counter;
+          } finally {
+            this.#counter++;
+          }
+        }
+      }
+
+      const counter = new Counter();
+      console.info(counter.next());
+      console.info(counter.next());
+      console.info(counter.next());
+      console.info(counter.next());
+      console.info(counter.next());
+    </script>
+  </body>
+</html>
